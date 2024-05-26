@@ -1,0 +1,11 @@
+containers c1 c2
+
+host network
+host container stores c1 c2 on same docker file but doesn't work in high security architecture like login and finance
+
+Bridge network 
+c1 gets network error while connecting to host ip so bridge called veth (virtual ethernet ) is in docker for this  used for this problem
+
+bridge is used for finance security problem 
+log in out to veth ( c1 c2 )
+c3 payment to v bridge i.e external docker created by run --network command and is connected to the host 
