@@ -1,0 +1,63 @@
+Install kubectl binary with curl on Windows
+
+
+curl.exe -LO "https://dl.k8s.io/release/v1.30.0/bin/windows/amd64/kubectl.exe"
+
+
+Validate the binary (optional)
+
+Download the kubectl checksum file:
+
+curl.exe -LO "https://dl.k8s.io/v1.30.0/bin/windows/amd64/kubectl.exe.sha256"
+Validate the kubectl binary against the checksum file:
+
+
+Using Command Prompt to manually compare CertUtil's output to the checksum file downloaded:
+
+curl.exe -LO "https://dl.k8s.io/release/v1.30.0/bin/windows/amd64/kubectl.exe"
+
+type kubectl.exe.sha256
+Using PowerShell to automate the verification using the -eq operator to get a True or False result:
+
+ $(Get-FileHash -Algorithm SHA256 .\kubectl.exe).Hash -eq $(Get-Content .\kubectl.exe.sha256)
+Append or prepend the kubectl binary folder to your PATH environment variable.
+
+Test to ensure the version of kubectl is the same as downloaded:
+
+kubectl version --client
+Or use this for detailed view of version:
+
+kubectl version --client --output=yaml
+
+IF "minikube" COMMAND WORKS THEN IT IS INSTALLED  
+
+minikube delete  
+
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+
+minikube start --driver=hyperv 
+
+minikube status (to check)
+
+
+
+INSTALLING MINIKUBE ( IF NOT INSTALLED )
+
+Download and run the installer for the latest release.
+Or if using PowerShell, use this command:
+
+New-Item -Path 'c:\' -Name 'minikube' -ItemType Directory -Force
+Invoke-WebRequest -OutFile 'c:\minikube\minikube.exe' -Uri 'https://github.com/kubernetes/minikube/releases/latest/download/minikube-windows-amd64.exe' -UseBasicParsing
+
+
+Add the minikube.exe binary to your PATH.
+Make sure to run PowerShell as Administrator.
+
+
+$oldPath = [Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::Machine)
+if ($oldPath.Split(';') -inotcontains 'C:\minikube'){
+  [Environment]::SetEnvironmentVariable('Path', $('{0};C:\minikube' -f $oldPath), [EnvironmentVariableTarget]::Machine)
+}
+
+If you used a terminal (like powershell) for the installation, please close the terminal and reopen it before running minikube.
+

@@ -1,0 +1,91 @@
+d1,d2...d6 means type:deployment ss
+
+l1,l2...l6 means type: load balancing ss
+
+Kubernetes (k8s)
+
+problems in docker and pros of kuber.
+
+1. single host nature 
+c1 takes more resource so being in queue c100 not getting run so c100 dies this prblm no 1
+
+2.
+kill c1 app shuts
+auto healing : c2 starts auto. when c1 starts going down so app runs 
+
+3. 
+auto scaling when more load comes ( ram , cpu increase ) with load balancing 
+
+4. 
+no fireball , no api resourse 
+
+#################
+
+3 components  in kuber. s worker side ( master - worker architecture )
+
+1. pod runtime : docker needs countainer(pod) runtime to run containers so it uses dockerstrim
+                 kubernetes can use any pod runtime  like dockerstrim , cri-o 
+2. kubelet to ensure the pod is running and shows errors to user if any
+3. kube-proxy for load balancing and ip addresses 
+
+components : master side
+1. api server : it is the core component establishes connection between the user and backend, takes all the commands from user and executes them.
+
+2. scheduler : schedules pods in kuber.
+
+3. etcd : all cluster and pods info. are stored in key value pair in etcd   
+
+4. CCM ( cloud controller manager ) : when we want to add kuber. and other files to project , we can get the configs from open source like github , this all is managed by CCM
+
+
+######################
+
+
+Managing 100+ clusters in kuber.
+uses Kops ( Kuber. operations ) to manage life cycle of clusters i.e " install, upgrade , manage and deletion . "
+
+diff. btw containers , pods , deployment
+
+pods can have multiple containers , share storage and resources btw them
+pod is a simple yml file to give device running specs. 
+
+deployment , deploys pods with auto healing by creating replica sets( r.s) of pods  
+eg. if 5 pods are specified in yml than if 2 got deleted deployment will auto heal and make the pod quantity 5 again , ensuring zero downtime .
+r.s is the controller in k8s.
+
+##################
+
+K8s service (svc)
+
+without services lets say p1 p2 p3 ( pods )
+p1 is down so auto healing creates a new p1 
+but with a different ip so the ip has to be updated everywhere 
+so users rather than using ip are told to use svc s i.e use the service directly 
+svc gives label to the p1 p2 ,so if ip changes p1 will still be under same label 
+svc also have load balancing   
+
+3 types of svc 
+1. cluster ip 
+only the users which have access to the cluster network of pod can access it
+
+2. LB type (svcs of amazon  ELB EKS )
+creates a public ip to access the pod and is available to all
+eg amazon available to all
+
+3. nodeport
+only user which have access to nodes (pods) can access it
+eg people in a company only have access 
+
+
+
+
+
+
+
+
+
+
+
+  
+
+

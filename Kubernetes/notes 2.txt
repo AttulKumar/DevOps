@@ -1,0 +1,16 @@
+############################
+load balancing  k8s and replica problems 
+
+see l images
+
+service.yml file type :-
+ it will only see the labels and selectors 
+eg if there are 100 pods but the labels have only MyApp specified so it will only work on pods with MyApp .
+
+curl -L ( for redirect ) 
+
+the port 3007 works as nodeport ie the organisation can only access it ( img )
+
+if want the pod to be public just , kubectl edit "filename" than change type to load balancer (rather than node port).
+
+in LB if you put 6 curl commands to 2 pods than the LB will divide them 3 3 on each pod .
