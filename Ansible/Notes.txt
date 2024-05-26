@@ -1,0 +1,28 @@
+ansible 
+
+add ip of ec2 in inventory file
+ansible -i inventory all -m "shell" -a "touch devopsclass"
+
+ansible -i inventory all -vvv "shell" -a "touch devopsclass"
+-vvv : is verbose shows all the processes done  to execute a command.
+
+
+--- # yml file format
+- name : install and start nginx   # - shows new task is run 
+  hosts : all  # ips specified in inventory 
+  become : root   # run as root or sudo 
+
+##########
+
+ansible-galaxy role init Kubernetes
+creates a structures k8 roles and folders
+it helps in segregating the playbook like 
+roles in roles folder , 
+tasks in tasks folder , 
+meta for info. of playbook , 
+handle for if else type condition like app doesn't run than dwlete files ,    ( SEE SS )
+files for html , certificate etc
+
+more structured and easy to understand , more playbook eg in https://github.com/ansible/ansible-examples/tree/master
+see lamp_haproxy and lamp_simple
+  
