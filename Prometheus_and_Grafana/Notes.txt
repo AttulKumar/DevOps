@@ -1,0 +1,15 @@
+https://github.com/iam-veeramalla/prometheus-Grafana-Zero-to-Hero
+
+Prometheus(pro.) architecture
+
+see diagram 
+
+k8s have api servers which stores important info. pro. fetch these files and store it in TSDB(time series DB) i.e in a timestamp order .
+pro. store all this info. in hard disk\node (hdd\ssd)
+pro. has a alert manager which sends alert to the devise configured with it , the alert is told by the developers that a problem or tools is not working.
+pro. sends promQL(pro. query ) to tools like Grafana and aws API clients.
+
+
+Grafana   
+Grafana is a dashboard which fetches data from pro. .
+the data in pro. is difficult to understand and info. are show in a complex manner , so Grafana shows info in interactive dashboards and better visuals. 
