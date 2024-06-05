@@ -8,4 +8,9 @@ c1 gets network error while connecting to host ip so bridge called veth (virtual
 
 bridge is used for finance security problem 
 log in out to veth ( c1 c2 )
-c3 payment to v bridge i.e external docker created by run --network command and is connected to the host 
+c3 payment to v bridge i.e external docker created by run --network command and is connected to the host
+
+#############
+in SS of c.. series as we see that 
+the login and logout (c1,c2) have ip address in similar range i.e. 172.17....
+where as when we create a secure network the ip is completely isolation from the c1 c2 i.e. 172.19....
