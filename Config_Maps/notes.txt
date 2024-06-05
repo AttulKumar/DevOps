@@ -1,0 +1,8 @@
+Config maps
+
+k8s store environment(env) and files of lets say DB port , DB connect (examples) in a container or a pod , so to reduce complexity devops use config maps(cm) to store the files and cm can deploy these stored files too, for all this cm uses etcd. 
+
+only non sensitive data should be stored in cm cause etcd can be hacked, for secure data k8s uses 'secrets'
+
+Secrets allow user to encrypt the etcd .
+2 ways k8s will encrypt by default or user can do custom encryption.
