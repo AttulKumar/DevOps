@@ -1,0 +1,62 @@
+CI CD 
+
+ci cd automates the basic steps which are performed before uploading an app to store .
+These steps are:
+
+1.
+unit testing
+testing that the code is giving desired result.
+
+2
+static code analysis 
+checking that the code doesn't have unnecessary variables, indentation right  etc.
+
+3
+code quality\vulnerability
+app should not be vulnerable and of high quality .
+
+4
+automation\functional testing
+the function only does the required job like only addition should be done in a function not multiply or divide, it is also end to end testing.
+
+5
+reports
+reporting of the result , faults and quality.
+
+6
+deployment
+deploying app in store so that it is available to customers.
+
+##########
+a developer makes a app version and submit it to github , he keeps submitting until he get the best version 
+He breaks it to chunks called jira files and each version is tested automatically by ci cd or called automation testing .
+
+eg Jenkins is a ci cd pipeline tools which will deploy n number of tools which will do automation testing .
+like stages 
+1 maven
+2 sonar 
+3 reporting 
+4 k8s /ec2
+
+all these tools will be integrated and deployed  by Jenkins automatically .
+
+############################
+Jenkins promotes app to 3 stages
+1.Dev
+where QA test and developers run app in simple env. like ec2 instance .
+
+2. stages
+here load on app is put and seen like master(M) slave(S) architecture.
+3M 5S in stages 
+so each app is tested in a single node than in multiple nodes.
+
+3. production 
+here the app is same as the app deployed in store 
+3M 30S so after app does well in previous stages step than only it is promoted for this step ......... same goes for dev to stage promotion.
+
+##############
+Jenkins can't handle large no. of servers due to high cost computing power need so an alternative is required.
+
+ 
+
+  
