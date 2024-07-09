@@ -1,4 +1,62 @@
-the c1,2,...8 is the wokrdone in containers
-
+the c1,2,...8 is the work done in containers
 
 https://github.com/iam-veeramalla/Docker-Zero-to-Hero
+
+##################
+
+SEE DIAGRAMS FROM VIDEO DAY 26 ,27
+
+multi stage docker builds 
+
+lets say I want to run a calculator app 
+the docker file will be :
+
+FROM ubuntu          ( deploying the ubuntu base image ) 
+WORKDIR . /app       (location of the folder where requirements.txt and other files are )
+COPY . /app           ( getting the necessary files ) 
+RUN apt python && pip   ( deploying the software needed )
+
+( In a Docker file, ENTRYPOINT and CMD are two instructions that work together to define the default command that runs when a container is started. )
+
+ENTRYPOINT [python.py]         (files cannot be changed entered here )
+CMD [ 0.0.0.0/8000 , .pip ]   (files that can be change and configured) 
+
+so lets say calculator only needs java runtime env. but we have to dwld the ehole ubuntu image .
+to solve this problem multi stages is used .
+
+it splits the same docker file in 2 parts 
+
+the line from ENTRYPOINT is deleted and 
+FROM python/java
+COPY -- from ubuntu
+ENTRYPOINT [/app]
+CMD [/app]
+
+thus reducing file size
+the 2nd part is known as the minimalistic image or distroless
+
+
+#################
+
+docker volumes and bind mounts 
+
+problems:
+
+1. 
+lets say docker doesn't have records of previous logs or nginx is deployed but the previous data is not available.
+
+2.
+a app has frontend , backend but the backend doesn't have data of previous days so the frontend also can only show the current day work if some fault occurs in backend and the old backend data is lost.
+
+SOLUTION
+
+1. BIND MOUNTS
+lets say container c1 has a folder /app and so the host is also binded to the /app then if c1 goes down then host will have all the info. in /app.
+ 
+2. VOLUMES
+its does the same thing as bind mounts but its advantage is it is not restricted to host or c1 , volume can be attached to s3, ec2, host etc.
+
+
+
+
+
